@@ -1,0 +1,141 @@
+import com.ultradcr.movie_domain.BoxOffice;
+import java.util.List;
+
+CREATE TABLE movie_Entity(
+    id              TEXT NOT NULL PRIMARY KEY,
+    title           TEXT NOT NULL,
+    year            TEXT NOT NULL,
+    directors       TEXT NOT NULL,
+    genreList       TEXT NOT NULL,
+    tvEpisodeInfo   TEXT NOT NULL,
+    type            TEXT NOT NULL,
+    imDbRating      TEXT NOT NULL,
+    runtimeStr      TEXT NOT NULL,
+    plotLocal       TEXT NOT NULL,
+    companies       TEXT NOT NULL,
+    plot            TEXT NOT NULL,
+    companyList     TEXT NOT NULL,
+    genres          TEXT NOT NULL,
+    actorList       TEXT NOT NULL,
+    imDbRatingVotes TEXT NOT NULL,
+    tvSeriesInfo    TEXT NOT NULL,
+    image           TEXT NOT NULL,
+    fullTitle       TEXT NOT NULL,
+    runtimeMins     TEXT NOT NULL,
+    releaseDate     TEXT NOT NULL,
+    errorMessage    TEXT NOT NULL,
+    directorList    TEXT NOT NULL,
+    writers         TEXT NOT NULL,
+    stars           TEXT NOT NULL,
+    countries       TEXT NOT NULL,
+    originalTitle   TEXT NOT NULL,
+    awards          TEXT NOT NULL,
+    starList        TEXT NOT NULL,
+    contentRating   TEXT NOT NULL,
+    boxOffice       TEXT NOT NULL,
+    writerList      TEXT NOT NULL
+);
+
+selectAllMovies:
+SELECT *
+FROM movie_Entity;
+
+insertMovie:
+INSERT OR REPLACE
+INTO movie_Entity (
+    id,
+    title,
+    year,
+    directors ,
+    genreList ,
+    tvEpisodeInfo  ,
+    type ,
+    imDbRating ,
+    runtimeStr ,
+    plotLocal,
+    companies ,
+    plot ,
+    companyList  ,
+    genres ,
+    actorList   ,
+    imDbRatingVotes,
+    tvSeriesInfo   ,
+    image   ,
+    fullTitle   ,
+    runtimeMins ,
+    releaseDate ,
+    errorMessage,
+    directorList ,
+    writers  ,
+    stars  ,
+    countries  ,
+    originalTitle  ,
+    awards  ,
+    starList  ,
+    contentRating  ,
+    boxOffice  ,
+    writerList
+) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+
+
+
+getMovie:
+SELECT * FROM movie_Entity
+WHERE id = :id;
+
+removeMovie:
+DELETE FROM movie_Entity
+WHERE id = :id;
+
+
+
+CREATE TABLE movie_Home_Entity(
+        imDbRating TEXT NOT NULL,
+        image TEXT NOT NULL,
+        fullTitle TEXT NOT NULL,
+        imDbRatingCount TEXT NOT NULL,
+        year TEXT NOT NULL,
+        rank TEXT NOT NULL,
+         id TEXT NOT NULL PRIMARY KEY,
+         rankUpDown TEXT NOT NULL,
+          title TEXT NOT NULL,
+         crew TEXT NOT NULL
+
+);
+
+insertHomeMovie:
+INSERT OR REPLACE
+INTO movie_Home_Entity (
+imDbRating,
+image,
+fullTitle,
+imDbRatingCount,
+year,
+rank,
+id,
+rankUpDown ,
+title,
+crew
+) VALUES (?,?,?,?,?,?,?,?,?,?);
+
+selectAllHomeMovies:
+SELECT *
+FROM movie_Home_Entity;
+
+getHomeMovie:
+SELECT * FROM movie_Home_Entity
+WHERE id = :id;
+
+removeHomeMovie:
+DELETE FROM movie_Home_Entity
+WHERE id = :id;
+
+searchMovieByTitle:
+SELECT * FROM movie_Home_Entity
+WHERE title LIKE ('%' || :query || '%');
+
+searchMovieByImDbRatingy:
+SELECT * FROM movie_Home_Entity
+WHERE imDbRating = :imDbRating;
+
+
